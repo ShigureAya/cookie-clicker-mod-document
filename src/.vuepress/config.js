@@ -1,7 +1,8 @@
 const {description} = require('../../package')
 
 module.exports = {
-    dest: 'public',    /**
+    dest: 'public',
+    /**
      * Ref：https://v1.vuepress.vuejs.org/config/#title
      */
     title: 'Cookie Clicker Mod Documents',
@@ -34,6 +35,12 @@ module.exports = {
         docsDir: '',
         editLinkText: '',
         lastUpdated: false,
+        nav: [
+            {
+                text: 'GitHub',
+                link: 'https://github.com/ShigureAya/cookie-clicker-mod-document'
+            }
+        ],
         sidebar: {
             '/': [
                 {
@@ -43,6 +50,7 @@ module.exports = {
                         '',
                         'info.txt',
                         'install',
+                        'devtool',
                         'ModAPI',
                         'Cookies',
 
