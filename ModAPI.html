@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modに関するAPI | Cookie Clicker Mod Documents</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="CookieClickerのModドキュメント">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.7fad836b.css" as="style"><link rel="preload" href="/assets/js/app.6f2a4ed4.js" as="script"><link rel="preload" href="/assets/js/2.2acf88dc.js" as="script"><link rel="preload" href="/assets/js/10.2489a164.js" as="script"><link rel="prefetch" href="/assets/js/11.c940e227.js"><link rel="prefetch" href="/assets/js/12.0087055d.js"><link rel="prefetch" href="/assets/js/3.69096b18.js"><link rel="prefetch" href="/assets/js/4.e6c79b57.js"><link rel="prefetch" href="/assets/js/5.e6460350.js"><link rel="prefetch" href="/assets/js/6.97d50098.js"><link rel="prefetch" href="/assets/js/7.fe3ca09c.js"><link rel="prefetch" href="/assets/js/8.6c12ecaa.js"><link rel="prefetch" href="/assets/js/9.3b0ea2fc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7fad836b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Cookie Clicker Mod Documents</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>目次</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/" aria-current="page" class="sidebar-link">Mod作成手順</a></li><li><a href="/info.txt.html" class="sidebar-link">設定ファイル(info.txt)</a></li><li><a href="/install.html" class="sidebar-link">Modインストール</a></li><li><a href="/ModAPI.html" aria-current="page" class="active sidebar-link">Modに関するAPI</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/ModAPI.html#game-registermod-id-mod" class="sidebar-link">Game.registerMod(id, mod)</a></li><li class="sidebar-sub-header"><a href="/ModAPI.html#game-registerhook-hook-func" class="sidebar-link">Game.registerHook(hook, func)</a></li></ul></li><li><a href="/Cookies.html" class="sidebar-link">クッキー関連</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="modに関するapi"><a href="#modに関するapi" class="header-anchor">#</a> Modに関するAPI</h1> <h2 id="game-registermod-id-mod"><a href="#game-registermod-id-mod" class="header-anchor">#</a> Game.registerMod(id, mod)</h2> <ul><li><p>引数:</p> <ul><li><code>{string} id</code><br> <code>info.txt</code>の<code>ID</code>と同じIDを設定する。</li> <li><code>{object} mod</code><br>
+init:初期処理を記載<br>
+save:セーブ時の処理を記載<br>
+load:ロード時の処理を記載</li></ul> <div class="language-js extra-class"><pre class="language-js"><code>Game<span class="token punctuation">.</span><span class="token function">registerMod</span><span class="token punctuation">(</span><span class="token string">&quot;my mod&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">init</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Modの初期処理をここに記載</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">,</span>
+    <span class="token function-variable function">save</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 返り値の文字列がセーブデータとして保存されます。</span>
+        <span class="token keyword">return</span> <span class="token string">'save data'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">,</span>
+    <span class="token function-variable function">load</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 引数に `save`で保存した文字列が入ります。</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></li> <li><p>使用方法:</p></li></ul> <p><code>save</code>の戻り値には文字列でしか渡すことができません。より複雑なデータを保存したい場合は文字列化したJSONで保存します。</p> <ul><li>例:<br>
+json形式でセーブデータを保存する</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> saveData <span class="token operator">=</span> <span class="token punctuation">{</span>
+    dataA<span class="token operator">:</span> <span class="token string">'aaa'</span><span class="token punctuation">,</span>
+    dataB<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    dataC<span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+Game<span class="token punctuation">.</span><span class="token function">registerMod</span><span class="token punctuation">(</span><span class="token string">&quot;my mod&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">init</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Modの初期処理をここに記載</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">,</span>
+
+    <span class="token function-variable function">save</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>saveData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">,</span>
+    <span class="token function-variable function">load</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        saveData <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="game-registerhook-hook-func"><a href="#game-registerhook-hook-func" class="header-anchor">#</a> Game.registerHook(hook, func)</h2> <ul><li><p>引数:</p> <ul><li><code>{string} hook</code><br>
+フックしたい処理名</li> <li><code>{function|Array&lt;function&gt;} func</code><br>
+フック時に行いたい処理</li></ul></li> <li><p>例:<br>
+単一指定</p></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">funcA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//処理</span>
+<span class="token punctuation">}</span>
+Game<span class="token punctuation">.</span><span class="token function">registerHook</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> funcA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code>Game<span class="token punctuation">.</span><span class="token function">registerHook</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//処理</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code>Game<span class="token punctuation">.</span><span class="token function">registerHook</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">//処理</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>配列指定</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">funcA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">//処理</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">funcB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//処理</span>
+<span class="token punctuation">}</span>
+Game<span class="token punctuation">.</span><span class="token function">registerHook</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span><span class="token punctuation">[</span>funcA<span class="token punctuation">,</span>funcB<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/install.html" class="prev">
+        Modインストール
+      </a></span> <span class="next"><a href="/Cookies.html">
+        クッキー関連
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6f2a4ed4.js" defer></script><script src="/assets/js/2.2acf88dc.js" defer></script><script src="/assets/js/10.2489a164.js" defer></script>
+  </body>
+</html>
