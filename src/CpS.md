@@ -1,6 +1,16 @@
 # CpS関連
 
-## CpSを再計算する
+## Game.globalCpsMult
+
+クッキー生産数(倍率)
+
+```js
+Game.recalculateGains = 1;
+```
+
+## Game.recalculateGains
+
+Game.recalculateGainsに1にするとCpSが再計算される
 
 ```js
 Game.recalculateGains = 1;
@@ -8,20 +18,11 @@ Game.recalculateGains = 1;
 
 ## CpSを変更する
 
-
 ```js
-//CpSを1000に固定
-Game.CalculateGains = function () {
-    Game.cookiesPs = 1;
-    Game.computedMouseCps = Game.mouseCps();
-    Game.recalculateGains = 0;
-};
-Game.recalculateGains = 1;
+ Game.registerHook('cps', (cps) => {
+    //cpsを2倍にする
+    return cps * 2
+});
 ```
 
 
-```js
-Game.cookiesPs//毎秒生産量
-Game.computedMouseCps//クリック生産量
-
-```

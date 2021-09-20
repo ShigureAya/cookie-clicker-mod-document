@@ -1,27 +1,73 @@
 # クッキー関連
 
-## クッキー数変更
+## Game.cookiesEarned
 
-クッキー数を変更
+貯まったクッキー
 
-```js
-//クッキー数を1000にする
-Game.cookies = 1000;
-```
+## Game.cookies
 
-クッキー数を増やす
+クッキー数
+
+## Game.cookiesd
+
+クッキー数(表示用)
+
+## Game.cookiesPs
+
+クッキー生産数
+
+## Game.cookiesPsRaw
+
+クッキー実生産数
+
+## Game.cookiesPsRawHighest
+
+クッキー実生産数(現昇天の最高記録)
+
+## Game.cookiesReset
+
+昇天で失ったクッキー
+
+## Game.cookieClicks
+
+クッキークリック数
+
+## Game.goldenClicks
+
+ゴールデンクッキークリック数(全期間)
+
+## Game.goldenClicksLocal
+
+ゴールデンクッキークリック数(現昇天中)
+
+## Game.missedGoldenClicks
+
+ゴールデンクッキーの逃した回数
+
+## Game.handmadeCookies
+
+手作りクッキー数
+
+## Game.computedMouseCps
+
+1クリックあたりの生産数
+
+## Game.Earn
+
+クッキー数を増やす  
 
 ```js
 //クッキー数を1000増やす
 Game.Earn(1000);
 ```
 
+## Game.Dissolve
 クッキー数を減らす
-
 ```js
 //クッキー数を1000減らす
-Game.cookies -= 1000;
+Game.Dissolve(1000);
 ```
+
 
 ## カスタムゴールデンクッキーの生成
 
