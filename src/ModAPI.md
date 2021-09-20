@@ -58,9 +58,12 @@ Game.registerMod("my mod", {
 
 - 引数:
     - `{string} hook`  
-        フックしたい処理名
-    - `{function|Array<function>} func`  
-        フック時に行いたい処理
+        フックしたい処理のHookID 
+        指定可能なHookID  
+       'logic','draw','reset','reincarnate','ticker','cps','cookiesPerClick','click','create','check'  
+        [詳しくはこちらを参照](./Hook.md)
+      - `{function|Array<function>} func`  
+        フック時に行いたいfunction
 
 - 例:  
 単一指定
@@ -95,4 +98,24 @@ Game.registerHook('click',[funcA,funcB]);
 ```
 
 
-[comment]: <> (['logic','draw','reset','reincarnate','ticker','cps','cookiesPerClick','click','create','check'])
+
+
+## Game.removeHook(hook, func)
+
+- 引数:
+    - `{string} hook`  
+      HookIDを指定
+    - `{function|Array<function>} func`  
+      Game.registerHookで登録したfunction
+
+- 例:  
+  単一指定
+```js
+function funcA() {
+    //処理
+}
+//処理を登録
+Game.registerHook('click', funcA);
+//処理の登録解除
+Game.removeHook('click', funcA);
+```

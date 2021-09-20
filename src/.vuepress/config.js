@@ -52,6 +52,7 @@ module.exports = {
                         'install',
                         'devtool',
                         'ModAPI',
+                        'Hook',
                         'Cookies',
 
                     ]
