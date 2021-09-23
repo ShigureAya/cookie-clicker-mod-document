@@ -54,6 +54,7 @@ module.exports = {
                         'ModAPI',
                         'Hook',
                         'Cookies',
+                        'SHIMMERS',
 
                     ]
                 }
