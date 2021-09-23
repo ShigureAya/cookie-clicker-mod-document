@@ -4,13 +4,50 @@
 
 - 型:`Array<shimmer>`
 - 詳細:  
-  表示中のShimmer一覧
+  出現中のゴールデンクッキー/トナカイ([Shimmer](#shimmer))リスト
+- 例:
 
-## Game.shimmerTypes
+```js
+//出現中のゴールデンクッキー/トナカイを逆順でループ
+//※ループ中にGame.shimmersの要素が減ってしまう為、逆順で処理ないとすべてに対して処理出来ない
+for (let i = Game.shimmers.length - 1; i >= 0; i--) {
+    //ゴールデンクッキー/トナカイをクリックする
+    Game.shimmers[i].pop()
+}
+```
 
-shimmerの種類の定義 golden reindeer
+```js
+//出現中のゴールデンクッキー/トナカイをループ
+//※filterによってGame.shimmersと別の配列になる為、Game.shimmersの要素が減っても正しく処理出来る
+Game.shimmers.filter(() => true).forEach(shimmer => {
+    //ゴールデンクッキー/トナカイをクリックする
+    shimmer.pop()
+})
+```
 
-nが画面上の数
+```js
+//出現中のゴールデンクッキーをループ
+//filterによってゴールデンクッキーのみに抽出
+Game.shimmers.filter(shimmer => shimmer.type === 'golden').forEach(shimmer => {
+    //ゴールデンクッキーをクリックする
+    shimmer.pop()
+})
+```
+
+```js
+//出現中のゴールデンクッキー(怒り状態)をループ
+//filterによってゴールデンクッキー(怒り状態)のみに抽出
+Game.shimmers.filter(shimmer => shimmer.type === 'golden' && shimmer.wrath).forEach(shimmer => {
+    //ゴールデンクッキー(怒り状態)をクリックする
+    shimmer.pop()
+})
+```
+
+[comment]: <> (## Game.shimmerTypes)
+
+[comment]: <> (shimmerの種類の****定****義 golden reindeer)
+
+[comment]: <> (nが画面上の数)
 
 ## Game.shimmer(type,obj,noCount)
 
@@ -22,13 +59,46 @@ nが画面上の数
     - `{object} obj` 省略可  
       ゴールデンクッキーの場合のみ指定する
         - `{string} type` 省略可  
-          ゴールデンクッキーの種類([参照](#ゴールデンクッキーの種類))を指定する
+          ゴールデンクッキーの種類([参照](#%E3%82%B3%E3%82%99%E3%83%BC%E3%83%AB%E3%83%86%E3%82%99%E3%83%B3%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%81%AE%E7%A8%AE%E9%A1%9E))
+          を指定する
         - `{boolean} wrath` 省略可  
           trueの場合、怒り状態のゴールデンクッキーにする
         - `{boolean} noWrath` 省略可  
           trueの場合、通常のゴールデンクッキーにする
     - `{boolean} noCount` 省略可  
       trueの場合、画面上の出現数にカウントしない
+- 例:
+
+```js
+//ゴールデンクッキーを出現させる
+new Game.shimmer('golden')
+```
+
+```js
+//トナカイを出現させる
+new Game.shimmer('reindeer')
+```
+
+```js
+//ゴールデンクッキー(ドラゴンフライト)を出現させる
+new Game.shimmer('golden', {type: 'dragonflight'})
+```
+
+```js
+//ゴールデンクッキー(怒り状態)出現させる
+new Game.shimmer('golden', {wrath: true})
+```
+
+```js
+//ゴールデンクッキー(通常状態)出現させる
+new Game.shimmer('golden', {noWrath: true})
+```
+
+```js
+//ゴールデンクッキーを出現させる
+//画面の出現数にはカウントしない
+new Game.shimmer('golden', {}, true)
+```
 
 ## shimmer
 
@@ -83,19 +153,41 @@ nが画面上の数
 - 詳細:
   trueの場合、クリック数などの統計をカウントする
 
+```js
+//ゴールデンクッキーを出現させる
+var newShimmer = new Game.shimmer('golden', {}, true)
+//統計をカウントを有効にする
+newShimmer.spawnLead = true
+```
+
 ### sizeMult
 
 - 型:`Number`
 
 - 詳細:
   shimmerのサイズの倍率
+- 例:
+
+```js
+//2倍の大きさのゴールデンクッキーを出現させる
+var newShimmer = new Game.shimmer('golden')
+newShimmer.sizeMult = 2
+```
 
 ### pop
 
 - 詳細:
   クリックされた際のFunction
+- 例:
 
-# ゴールデンクッキーの種類
+```js
+//ゴールデンクッキーを出現させる
+var newShimmer = new Game.shimmer('golden', {}, true)
+//ゴールデンクッキーをクリックする
+newShimmer.pop()
+```
+
+## ゴールデンクッキーの種類
 
 | type             | 名前(JA)           | 名前(EN)           | 効果                                       |
 |------------------|------------------|------------------|------------------------------------------|
