@@ -55,6 +55,7 @@ module.exports = {
                         'Hook',
                         'Cookies',
                         'SHIMMERS',
+                        'asset',
 
                     ]
                 }
